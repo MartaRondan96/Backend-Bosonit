@@ -1,5 +1,5 @@
 package com.bosonit.formacion;
-
+//Clase Person
 public class Person {
     String name;
     String town;
