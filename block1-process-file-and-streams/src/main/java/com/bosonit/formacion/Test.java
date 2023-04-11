@@ -1,24 +1,52 @@
 package com.bosonit.formacion;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Test {
-    public static void main(String[] args) {
-        /*Crear un método que reciba la ruta de un fichero CSV (por ejemplo: people.csv) y devuelva una lista de
-        personas. El formato del fichero es el siguiente:
-        Cada línea del fichero corresponde a una persona (clase Person).
-        Cada línea puede contener hasta 3 campos separados por dos puntos (:). Los campos serán los siguientes:
-            name:town:age
+    public static void main(String[] args) throws IOException, InvalidLineFormatException {
+        List<Person> people = readCSVFile();
+        System.out.println("lista de personas");
+        for(Person p : people){
+            System.out.println(p);
+        }
 
-        El campo name es obligatorio, el resto de campos son opcionales. Nota: cuando no se informe el campo age
-        guardaremos la persona con 0 años. Si hay alguna línea en el fichero en la que el campo age sea 0,
-        consideraremos que esa persona tiene edad desconocida.
-        Si cualquiera de las líneas no tiene formato correcto el método debe lanzar una excepción
-        InvalidLineFormatException. Esta excepción debe incluir un mensaje descriptivo incluyendo la línea que provocó
-        el error y la causa de la excepción.
-        Nota: no usamos Stream en este método porque no permite tratar correctamente la excepción
-        InvalidLineFormatException. Stream no se recomienda cuando hay que tratar excepciones.
-         */
     }
 
+    public static List<Person> readCSVFile() throws IOException, InvalidLineFormatException {
+        List<Person> peopleList = new ArrayList<>();
+        Person p = new Person();
+        Path path = Paths.get("src/main/resources/people.cvs");
+
+        BufferedReader reader = Files.newBufferedReader(path);
+        String line = reader.readLine();
+        while(line!=null){
+            String[] data = line.split(":");
+
+            if (data.length <2 || data[0].isBlank()) {
+                throw new InvalidLineFormatException("Invalid line format: " + line, null);
+            }
+            String name = data[0];
+            //no escribe unknown em la ciudad
+            //Revisar condicion
+            String town = data.length > 1 ? data[1] : "unknown";
+            int age = data.length > 2 ? Integer.parseInt(data[2]) : 0;
+
+            peopleList.add(new Person(name, town, age));
+
+            line=reader.readLine();
+        }
+        return peopleList;
+    }
+
+    static class InvalidLineFormatException extends Exception {
+        public InvalidLineFormatException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
 }
