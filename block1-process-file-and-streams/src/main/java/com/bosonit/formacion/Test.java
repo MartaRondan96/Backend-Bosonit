@@ -41,7 +41,7 @@ public class Test {
                 .filter(p -> p.getTown().equals("Barcelona"))
                 .findFirst();
 
-        System.out.println("First Bcn Person: " + bcnPeople.get());
+        System.out.println("First Bcn Person: " + bcnPeople);
     }
 
     //Método que lee el fichero y devuelve una lista de personas
