@@ -48,7 +48,6 @@ public class Test {
     public static List<Person> readCSVFile() throws IOException, InvalidLineFormatException {
         List<Person> peopleList = new ArrayList<>();
         Path path = Paths.get("src/main/resources/people.cvs");
-        //SURROUND WITH TRY CATCH READ LINE AND FILE.EXIST
         BufferedReader reader = Files.newBufferedReader(path);
         String line = reader.readLine();
         while(line!=null){
