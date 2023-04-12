@@ -32,9 +32,7 @@ public class Test {
                 throw new InvalidLineFormatException("Invalid line format: " + line, null);
             }
             String name = data[0];
-            //no escribe unknown em la ciudad
-            //Revisar condicion
-            String town = data.length > 1 ? data[1] : "unknown";
+            String town = data[1].isBlank() ? "unknown": data[1];
             int age = data.length > 2 ? Integer.parseInt(data[2]) : 0;
 
             peopleList.add(new Person(name, town, age));
