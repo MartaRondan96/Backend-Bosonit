@@ -22,16 +22,16 @@ public class Block5CommandLineRunnerApplication implements CommandLineRunner {
 		System.out.println("Hola desde clase secundaria");
 	}
 
-	public void claseTercera(){
-		System.out.println("Hola desde tercera clase");
+	public void claseTercera(String cadena, String s){
+		System.out.println(cadena + " " + s);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
 		claseSecundaria();
-		claseTercera();
+		claseTercera("Hola desde", "Funcion claseTercera");
 	}
 
-	//Primero se muestra el mensaje de la funcion claseInicial() y luego el resultado de las otras dos funciones
-	//PostConstruct se ejecuta despues de inicializar la app y CommandLineRunner despues de desplegarla por completo
+	//Primero se muestra el mensaje de la función claseInicial() y luego el resultado de las otras dos funciones
+	//PostConstruct se ejecuta despues de inicializar la app y CommandLineRunner después de desplegarla por completo
 }
