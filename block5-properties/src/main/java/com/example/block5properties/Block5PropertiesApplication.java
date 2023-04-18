@@ -11,8 +11,9 @@ public class Block5PropertiesApplication implements CommandLineRunner {
 	public String greeting;
 	@Value("${my.number}")
 	public int number;
-	@Value("${new.property: ‘new.property no tiene valor'}")
+	@Value("${new.property:new.property no tiene valor}")
 	public String newProperty;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Block5PropertiesApplication.class, args);
@@ -22,6 +23,6 @@ public class Block5PropertiesApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("El valor de greeting: "+greeting);
 		System.out.println("El valor de number: "+number);
-		System.out.println("El valor de number: "+newProperty);
+		System.out.println("El valor de new.property: "+newProperty);
 	}
 }
