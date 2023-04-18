@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
 @SpringBootApplication
-public class Block5PropertiesApplication implements CommandLineRunner {
+public class Block5PropertiesApplication implements CommandLineRunner{
 
 	@Autowired
 	public Environment environment;
@@ -33,4 +33,6 @@ public class Block5PropertiesApplication implements CommandLineRunner {
 		this.prueba = environment.getProperty("greeting");
 		System.out.println(prueba);
 	}
+
+
 }
