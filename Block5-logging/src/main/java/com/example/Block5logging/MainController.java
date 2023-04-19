@@ -15,7 +15,7 @@ public class MainController {
         log.debug("Mensaje DEBUG");
         log.info("Mensaje INFO");
         log.warn("Mensaje WARNING");
-        log.error("ERROR e");
+        log.error("Mensaje ERROR");
 
         return "Ejercicio bloque 5 logging. Mira los logs";
     }
