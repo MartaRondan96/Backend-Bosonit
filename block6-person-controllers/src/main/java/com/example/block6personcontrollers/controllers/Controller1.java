@@ -15,17 +15,20 @@ import java.util.List;
 @RestController
 @RequestMapping("controlador1/")
 public class Controller1 {
+    //inyecta el servicio de persona
     @Autowired
     PersonaServiceImpl personaServiceImpl;
     @Autowired
     @Qualifier("list")
     List ciudadesList;
+
+    //Añade una persona a través de un metodo del servicio, recibe los valores por Headers
     @GetMapping(value="addPersona/")
     public Person addPerson(@RequestHeader("nombre") String nombre, @RequestHeader("poblacion") String poblacion,
                             @RequestHeader("edad") int edad){
         return personaServiceImpl.createPerson(nombre,poblacion,edad);
     }
-
+    //Añade una ciudad a la lista que recibe en un JSON
     @PostMapping(value="addCiudad/")
     public ResponseEntity addCiudad(@RequestBody Ciudad ciudad){
         Ciudad c = new Ciudad(ciudad.getNombre(),ciudad.getNumHabitantes());
