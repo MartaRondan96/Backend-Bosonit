@@ -8,4 +8,5 @@ import lombok.Data;
 public class Ciudad {
     String nombre;
     int numHabitantes;
+
 }

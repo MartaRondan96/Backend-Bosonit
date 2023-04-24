@@ -9,5 +9,4 @@ public class Person {
     String nombre, poblacion;
     int edad;
 
-
 }
