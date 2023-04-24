@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("controlador2/")
-public class GetPersonaController {
+@RequestMapping("controlador1/")
+public class Controller1 {
     @Autowired
     PersonaServiceImpl personaServiceImpl;
-    @GetMapping(value="getPersona/")
-    public Person getPerson(@RequestHeader("nombre") String nombre, @RequestHeader("poblacion") String poblacion,
+    @GetMapping(value="addPersona/")
+    public Person addPerson(@RequestHeader("nombre") String nombre, @RequestHeader("poblacion") String poblacion,
                             @RequestHeader("edad") int edad){
-        return personaServiceImpl.createPerson(nombre,poblacion,edad*2);
+        return personaServiceImpl.createPerson(nombre,poblacion,edad);
     }
 }
