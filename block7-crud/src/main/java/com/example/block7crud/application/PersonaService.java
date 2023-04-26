@@ -10,5 +10,5 @@ public interface PersonaService {
     Iterable<PersonaOutputDTO> getAllPersonas(int pageNumber, int pageSize);
     PersonaOutputDTO getPersonaByNombre(String nombre);
 
-    PersonaOutputDTO updatePersona(int id, PersonaInputDTO persona);
+    PersonaOutputDTO updatePersona(PersonaInputDTO persona, int id) throws Exception;
 }

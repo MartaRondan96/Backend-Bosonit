@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -45,10 +46,18 @@ public class PersonaServiceImpl implements PersonaService{
     }
 
     @Override
-    public PersonaOutputDTO updatePersona(int id, PersonaInputDTO persona) {
-        personaRepository.findById(persona.getId()).orElseThrow();
-        return personaRepository.save(new Persona(persona))
-                .personaToPersonaOutputDTO();
+    public PersonaOutputDTO updatePersona(PersonaInputDTO persona,int id) {
+        Persona personaAct = personaRepository.findById(id).orElseThrow();
+        if (persona.getNombre() != null) {
+            personaAct.setNombre(persona.getNombre());
+        }
+        if (persona.getEdad() != 0) {
+            personaAct.setEdad(persona.getEdad());
+        }
+        if (persona.getPoblacion() != null) {
+            personaAct.setPoblacion(persona.getPoblacion());
+        }
+        return personaRepository.save(personaAct).personaToPersonaOutputDTO();
     }
 
 }

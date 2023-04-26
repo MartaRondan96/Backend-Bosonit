@@ -14,11 +14,7 @@ public class UpdateController {
     PersonaServiceImpl personaService;
     @PutMapping("/{id}")
     public ResponseEntity<PersonaOutputDTO> updatePersona(@RequestBody PersonaInputDTO Persona, @PathVariable int id) {
-        try {
-            personaService.updatePersona(id, Persona);
+            personaService.updatePersona(Persona,id);
             return ResponseEntity.ok().body(personaService.getPersonaById(id));
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
     }
 }
