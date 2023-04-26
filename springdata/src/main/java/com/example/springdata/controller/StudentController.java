@@ -53,7 +53,7 @@ public class StudentController {
     public ResponseEntity<StudentOutputDTO> updateStudent(@RequestBody StudentInputDTO student) {
         try {
             studentService.getStudentById(student.getId());
-            return  ResponseEntity.ok().body(studentService.addStudent(student));
+            return  ResponseEntity.ok().body(studentService.updateStudent(student));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }

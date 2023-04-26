@@ -26,7 +26,6 @@ public class Student {
         this.name = studentInputDTO.getName();
         this.lastName = studentInputDTO.getLastName();
     }
-
     public StudentOutputDTO studentToStudentOutputDTO() {
         return new StudentOutputDTO(
                 this.id,
@@ -34,5 +33,4 @@ public class Student {
                 this.lastName
         );
     }
-
 }
