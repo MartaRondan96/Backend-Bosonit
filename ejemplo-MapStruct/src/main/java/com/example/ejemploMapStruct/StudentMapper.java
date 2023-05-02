@@ -8,11 +8,11 @@ public interface StudentMapper {
     //Se indica target porque los atributos no coinciden en nombre
     @Mapping(target="name", source="studentName")
     @Mapping(target="age", source="studentAge")
-    StudentDto studentToStudentDto(Student student);
+    StudentImputDto studentToStudentDto(Student student);
 
     @Mapping(target="studentName", source="name")
     @Mapping(target="studentAge", source="age")
-    Student studentDtoToStudent(StudentDto studentDto);
+    Student studentDtoToStudent(StudentImputDto studentDto);
 
     @Mapping(target="name", source="studentName")
     @Mapping(target="age", source="studentAge")

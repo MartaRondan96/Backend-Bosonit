@@ -1,14 +1,43 @@
 package com.example.ejemploMapStruct;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@AllArgsConstructor
+@Entity
+@Setter
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Student {
-    public String studentName;
-    public int studentAge;
-    public StudentDetails details;
+    @Id
+    @GeneratedValue
+    int id;
+    String name;
+    String lastName;
+
+    @OneToOne
+    private StudentDetails student_details;
+
+    @ManyToOne
+    private School school;
+
+    @ManyToMany
+    Set<Course> courses;
+
+    public Student(StudentInputDto studentInputDto) {
+        this.id = studentInputDto.getId();
+        this.name = studentInputDto.getName();
+        this.lastName = studentInputDto.getLastName();
+    }
+
+    public StudentOutputDto studentToStudentOutputDto() {
+        return new StudentOutputDto(
+                this.id,
+                this.name,
+                this.lastName
+        );
+    }
 }
