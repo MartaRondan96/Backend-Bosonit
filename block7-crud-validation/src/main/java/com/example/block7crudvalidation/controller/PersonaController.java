@@ -3,7 +3,11 @@ package com.example.block7crudvalidation.controller;
 import com.example.block7crudvalidation.application.PersonaServiceImpl;
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
+import com.example.block7crudvalidation.domain.CustomError;
+import com.example.block7crudvalidation.exception.EntityNotFoundException;
+import com.example.block7crudvalidation.exception.UnprocessableEntityException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +26,7 @@ public class PersonaController {
     }
     //    Buscar por ID
     @GetMapping("/{id}")
-    public ResponseEntity<PersonaOutputDto> getPersonaId(@PathVariable int id){
+    public ResponseEntity<PersonaOutputDto> getPersonaId(@PathVariable int id) throws EntityNotFoundException {
         personaService.getPersonaById(id);
         return ResponseEntity.ok().body(personaService.getPersonaById(id));
     }
@@ -45,7 +49,7 @@ public class PersonaController {
         return personaService.getAllPersonas(numPages, pageSize);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<PersonaOutputDto> updatePersona(@RequestBody PersonaInputDto Persona, @PathVariable int id) {
+    public ResponseEntity<PersonaOutputDto> updatePersona(@RequestBody PersonaInputDto Persona, @PathVariable int id) throws EntityNotFoundException, UnprocessableEntityException {
         personaService.updatePersona(Persona,id);
         return ResponseEntity.ok().body(personaService.getPersonaById(id));
     }
@@ -57,5 +61,17 @@ public class PersonaController {
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<CustomError> handleEntityNotFoundException(EntityNotFoundException ex) {
+        CustomError error = ex.getError();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(UnprocessableEntityException.class)
+    public ResponseEntity<CustomError> handleUnprocessableEntityException(UnprocessableEntityException ex) {
+        CustomError error = ex.getError();
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(error);
     }
 }
