@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "71ffa456-0b6f-4f39-9804-1506a49b1547",
+		"name": "BLOCK 7 CRUD VALIDATION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26988328"
+	},
+	"item": [
+		{
+			"name": "addPersona",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\" : \"MartaR\",\r\n    \"password\" : \"12345678\",\r\n    \"name\" : \"Marta\",\r\n    \"surname\" : \"Rondan\",\r\n    \"company_email\" : \"marta@company.com\",\r\n    \"personal_email\" : \"marta@personal.com\",\r\n    \"city\" : \"Cádiz\",\r\n    \"active\" : true,\r\n    \"create_date\" : \"2019-05-10\",\r\n    \"image_url\" : \"image_url\",\r\n    \"termination_date\" : \"2019-06-08\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/persona",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPersonas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/persona",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPersonaById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/persona/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPersonaUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/persona/usuario/MartaR",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"usuario",
+						"MartaR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePersona",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/persona?id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePersona",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Mario\",\r\n    \"surname\" : \"Cherbuy\",\r\n    \"company_email\" : \"mario@company.com\",\r\n    \"personal_email\" : \"mario@personal.com\",\r\n    \"city\" : \"Cádiz\",\r\n    \"active\" : true,\r\n    \"create_date\" : \"2019-05-10\",\r\n    \"image_url\" : \"image_url\",\r\n    \"termination_date\" : \"2019-06-08\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/persona/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

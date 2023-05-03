@@ -28,7 +28,7 @@ public class PersonaController {
     }
     //    Buscar por nombre de usuario (campo usuario)
     @GetMapping("/usuario/{usuario}")
-    public ResponseEntity<PersonaOutputDto> getPersonaName(@PathVariable String usuario) {
+    public ResponseEntity<PersonaOutputDto> getPersonaUsuario(@PathVariable String usuario) {
         try {
             return ResponseEntity.ok().body(personaService.getPersonaByUsuario(usuario));
         } catch (Exception e) {

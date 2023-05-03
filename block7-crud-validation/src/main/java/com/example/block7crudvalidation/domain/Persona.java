@@ -51,7 +51,7 @@ public class Persona {
         this.active = personaInputDTO.getActive();
         this.create_date = personaInputDTO.getCreate_date();
         this.image_url = personaInputDTO.getImage_url();
-        this.termination_date = personaInputDTO.getTermination_data();
+        this.termination_date = personaInputDTO.getTermination_date();
     }
     public PersonaOutputDto personaToPersonaOutputDTO(){
         return new PersonaOutputDto(

@@ -21,5 +21,5 @@ public class PersonaInputDto {
     private Boolean active;
     private Date create_date;
     private String image_url;
-    private Date termination_data;
+    private Date termination_date;
 }

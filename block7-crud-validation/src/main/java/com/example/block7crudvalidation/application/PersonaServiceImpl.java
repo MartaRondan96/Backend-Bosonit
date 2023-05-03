@@ -20,7 +20,7 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public PersonaOutputDto addPersona(PersonaInputDto persona) throws Exception {
-        if (persona.getUsuario() == null || !(persona.getUsuario().length()>=6) || !(persona.getUsuario().length()<=10) ) {
+        if (persona.getUsuario() == null || persona.getUsuario().length()<6  || persona.getUsuario().length()>10) {
             throw new Exception("Usuario no cumple las condiciones");
         }
         if (persona.getPassword() == null) {
@@ -76,7 +76,7 @@ public class PersonaServiceImpl implements PersonaService{
             personaAct.setCreate_date(persona.getCreate_date());
         }
         personaAct.setImage_url(persona.getImage_url());
-        personaAct.setTermination_date(persona.getTermination_data());
+        personaAct.setTermination_date(persona.getTermination_date());
         return personaRepository.save(personaAct).personaToPersonaOutputDTO();
 
     }
