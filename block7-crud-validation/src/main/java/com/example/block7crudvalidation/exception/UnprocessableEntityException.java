@@ -10,11 +10,13 @@ import java.util.Date;
 @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
 public class UnprocessableEntityException extends RuntimeException {
     private Date timestamp = new Date();
-    public UnprocessableEntityException(){
+    private String message;
+    public UnprocessableEntityException(String message){
+        this.message = message;
     }
 
     public CustomError getError() {
-        return new CustomError(timestamp, HttpStatus.UNPROCESSABLE_ENTITY.value(), "UNPROCESSABLE ENTITY: La validación de los campos no cumple los requisitos establecidos");
+        return new CustomError(timestamp, HttpStatus.UNPROCESSABLE_ENTITY.value(), this.message);
 
     }
 }

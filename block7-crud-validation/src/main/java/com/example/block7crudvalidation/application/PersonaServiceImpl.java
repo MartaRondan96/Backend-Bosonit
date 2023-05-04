@@ -17,7 +17,7 @@ public class PersonaServiceImpl implements PersonaService{
     @Override
     public PersonaOutputDto getPersonaById(int id) throws EntityNotFoundException {
         if(personaRepository.findById(id).isEmpty()) {
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
         }
         else{
             return personaRepository.findById(id).orElseThrow()
@@ -27,31 +27,51 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public PersonaOutputDto addPersona(PersonaInputDto persona) throws Exception {
-        if (persona.getUsuario() == null || persona.getUsuario().length()<6  || persona.getUsuario().length()>10)
-            throw new UnprocessableEntityException();
+        if (!(persona.getUsuario() != null && persona.getUsuario().length() >= 6 && persona.getUsuario().length() <= 10))
+            throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Usuario no cumple las condiciones");
+            if (persona.getPassword() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Password no puede ser nulo");
+            if (persona.getName() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Name no puede ser nulo");
+            if (persona.getCompany_email() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Company_email no puede ser nulo");
+            if (persona.getPersonal_email() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Personal_email no puede ser nulo");
+            if (persona.getCity() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: City no puede ser nulo");
+            if (persona.getActive() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Active no puede ser nulo");
+            if (persona.getCreate_date() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Create_date no puede ser nulo");
 
-        if (persona.getPassword() == null || persona.getName() == null || persona.getCompany_email() == null || persona.getPersonal_email() == null
-                || persona.getCity() == null || persona.getActive() == null || persona.getCreate_date() == null)
-            throw new UnprocessableEntityException();
-        return personaRepository.save(new Persona(persona)).personaToPersonaOutputDTO();
+            return personaRepository.save(new Persona(persona)).personaToPersonaOutputDTO();
     }
 
     @Override
     public PersonaOutputDto updatePersona(PersonaInputDto persona, int id ) throws EntityNotFoundException, UnprocessableEntityException {
         if(personaRepository.findById(id).isEmpty()) {
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
         }
-        else {
+
             Persona personaAct = personaRepository.findById(id).orElseThrow();
-            if (persona.getUsuario() != null && persona.getUsuario().length() >= 6 && persona.getUsuario().length() <= 10) {
+            if (!(persona.getUsuario() != null && persona.getUsuario().length() >= 6 && persona.getUsuario().length() <= 10))
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Usuario no cumple las condiciones");
+            if (persona.getPassword() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Password no puede ser nulo");
+            if (persona.getName() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Name no puede ser nulo");
+            if (persona.getCompany_email() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Company_email no puede ser nulo");
+            if (persona.getPersonal_email() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Personal_email no puede ser nulo");
+            if (persona.getCity() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: City no puede ser nulo");
+            if (persona.getActive() == null)
+                    throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Active no puede ser nulo");
+            if (persona.getCreate_date() == null)
+                throw new UnprocessableEntityException("UNPROCESSABLE ENTITY: Create_date no puede ser nulo");
+
                 personaAct.setUsuario(persona.getUsuario());
-            } else {
-                throw new UnprocessableEntityException();
-            }
-            if (persona.getPassword() == null || persona.getName() == null || persona.getCompany_email() == null || persona.getPersonal_email() == null
-                    || persona.getCity() == null || persona.getActive() == null || persona.getCreate_date() == null){
-                throw new UnprocessableEntityException();
-            }else {
                 personaAct.setPassword(persona.getPassword());
                 personaAct.setName(persona.getName());
                 personaAct.setSurname(persona.getSurname());
@@ -62,15 +82,14 @@ public class PersonaServiceImpl implements PersonaService{
                 personaAct.setCreate_date(persona.getCreate_date());
                 personaAct.setImage_url(persona.getImage_url());
                 personaAct.setTermination_date(persona.getTermination_date());
-            }
             return personaRepository.save(personaAct).personaToPersonaOutputDTO();
-        }
+
     }
 
     @Override
     public void deletePersonaById(int id) throws EntityNotFoundException {
         if(personaRepository.findById(id).isEmpty()) {
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
         }
         else{
             personaRepository.deleteById(id);
@@ -88,7 +107,7 @@ public class PersonaServiceImpl implements PersonaService{
     @Override
     public PersonaOutputDto getPersonaByUsuario(String usuario) throws EntityNotFoundException {
         if(personaRepository.findByUsuario(usuario).isEmpty()) {
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
         }
         else{
         return personaRepository.findByUsuario(usuario).orElseThrow()

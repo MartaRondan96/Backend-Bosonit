@@ -15,7 +15,7 @@ public class EjemploMapStructApplication {
 
 	@PostConstruct
 	public void run () {
-		StudentImputDto studentDto = new StudentImputDto("StudentName", 37);
+		StudentInputDto studentDto = new StudentInputDto("StudentName", 37);
 		Student student = mapper.studentDtoToStudent(studentDto);
 		System.out.println("Objeto student:");
 		System.out.println(student);

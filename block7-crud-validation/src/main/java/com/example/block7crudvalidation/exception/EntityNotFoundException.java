@@ -9,11 +9,13 @@ import java.util.Date;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class EntityNotFoundException extends RuntimeException{
     private Date timestamp = new Date();
-    public  EntityNotFoundException(){
+    private String message;
+    public  EntityNotFoundException(String message){
+        this.message = message;
     }
 
     public CustomError getError() {
-        return new CustomError(timestamp, HttpStatus.NOT_FOUND.value(), "NOT FOUND: No se encuentran registros");
+        return new CustomError(timestamp, HttpStatus.NOT_FOUND.value(), this.message);
 
     }
 }
