@@ -1,5 +1,6 @@
 package com.example.block7crudvalidation.controller;
 
+import com.example.block7crudvalidation.application.PersonaService;
 import com.example.block7crudvalidation.application.PersonaServiceImpl;
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
@@ -17,7 +18,7 @@ import java.net.URI;
 @RequestMapping("/persona")
 public class PersonaController {
     @Autowired
-    private PersonaServiceImpl personaService;
+    private PersonaService personaService;
 
     @PostMapping
     public ResponseEntity<PersonaOutputDto> addPersona(@RequestBody PersonaInputDto persona) throws Exception {
