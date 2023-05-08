@@ -7,8 +7,8 @@ import com.example.block7crudvalidation.exception.UnprocessableEntityException;
 
 public interface StudentService {
     StudentOutputDto getStudentById(int id);
-    StudentOutputDto addStudent(StudentInputDto persona);
-    StudentOutputDto updateStudent(StudentInputDto persona, int id);
+    StudentOutputDto addStudent(StudentInputDto student);
+    StudentOutputDto updateStudent(StudentInputDto student, int id);
     void deleteStudentById(int id);
     Iterable<StudentOutputDto> getAllStudents(int numPage, int pageSize);
 }
