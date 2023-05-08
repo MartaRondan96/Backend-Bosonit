@@ -15,32 +15,32 @@ import java.util.Date;
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-     int id;
+    private int id;
     //NOT NULL max-length: 10 min-length: 6
-     String usuario;
+    private String usuario;
     //NOT NULL
-     String password;
+    private String password;
     //NOT NULL
-     String name;
-     String surname;
+    private String name;
+    private String surname;
     //NOT NULL
-     String company_email;
+    private String company_email;
     //NOT NULL
-     String personal_email;
+    private  String personal_email;
     //NOT NULL
-     String city;
+    private String city;
     //NOT NULL
-     Boolean active;
+    private Boolean active;
     //NOT NULL
-     Date create_date;
-     String image_url;
-     Date termination_date;
+    private Date create_date;
+    private String image_url;
+    private Date termination_date;
      //Student-Persona relacion OneToOne
      @OneToOne
-     Student student;
+     private Student student;
     //Profesor-Persona relacion OneToOne
      @OneToOne
-     Profesor profesor;
+     private Profesor profesor;
     public Persona(PersonaInputDto personaInputDTO){
         this.id = personaInputDTO.getId();
         this.usuario = personaInputDTO.getUsuario();
