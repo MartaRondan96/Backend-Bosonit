@@ -23,5 +23,5 @@ public class Profesor {
     String branch;
     //OneToMany -> un profesor tiene n estudiantes
     @OneToMany(fetch = FetchType.LAZY)
-    List<Student> StudentList;
+    List<Student> studentList;
 }

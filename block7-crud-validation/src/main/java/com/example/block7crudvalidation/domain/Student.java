@@ -19,7 +19,7 @@ import java.util.Set;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Integer id_student;
+    Integer id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_Persona")
     Persona persona;
