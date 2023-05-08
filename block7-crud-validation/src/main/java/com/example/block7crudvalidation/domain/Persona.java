@@ -2,43 +2,45 @@ package com.example.block7crudvalidation.domain;
 
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Persona {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+     int id;
     //NOT NULL max-length: 10 min-length: 6
-    private String usuario;
+     String usuario;
     //NOT NULL
-    private String password;
+     String password;
     //NOT NULL
-    private String name;
-    private String surname;
+     String name;
+     String surname;
     //NOT NULL
-    private String company_email;
+     String company_email;
     //NOT NULL
-    private String personal_email;
+     String personal_email;
     //NOT NULL
-    private String city;
+     String city;
     //NOT NULL
-    private Boolean active;
+     Boolean active;
     //NOT NULL
-    private Date create_date;
-    private String image_url;
-    private Date termination_date;
+     Date create_date;
+     String image_url;
+     Date termination_date;
+     //Student-Persona relacion OneToOne
+     @OneToOne
+     Student student;
+    //Profesor-Persona relacion OneToOne
+     @OneToOne
+     Profesor profesor;
     public Persona(PersonaInputDto personaInputDTO){
         this.id = personaInputDTO.getId();
         this.usuario = personaInputDTO.getUsuario();
