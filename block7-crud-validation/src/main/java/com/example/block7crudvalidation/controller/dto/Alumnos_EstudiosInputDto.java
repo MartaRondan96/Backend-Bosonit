@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,7 +18,7 @@ import java.util.List;
 public class Alumnos_EstudiosInputDto {
     Integer id;
     Profesor profesor;
-    List<Student> studentList;
+    Set<Student> studentList;
     String asignatura;
     String comment;
     Date initialDate;

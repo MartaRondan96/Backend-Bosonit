@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,5 +22,5 @@ public class StudentInputDto {
     String comments;
     String branch;
     Profesor profesor;
-    List<Alumnos_Estudios> estudiosList;
+    Set<Alumnos_Estudios> estudiosList;
 }

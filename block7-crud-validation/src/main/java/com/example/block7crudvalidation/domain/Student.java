@@ -38,7 +38,7 @@ public class Student {
     @Column(name = "rama")
     private String branch;
     @ManyToMany(mappedBy = "student")
-    private List<Alumnos_Estudios> estudios;
+    private Set<Alumnos_Estudios> estudios;
 
     public StudentOutputDto studentToStudentOutputDto(){
         return new StudentOutputDto(

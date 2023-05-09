@@ -28,8 +28,8 @@ public class Alumnos_Estudios {
     @JoinColumn(name = "id_Profesor")
     private Profesor profesor;
     //ManyToMany -> un estudio tiene n estudiantes
-    @ManyToMany
-    private List<Student> student;
+    @ManyToMany(mappedBy = "estudios")
+    private Set<Student> student;
     @Column(name = "asignatura")
     private String asignatura;
     @Column(name = "comentarios")
