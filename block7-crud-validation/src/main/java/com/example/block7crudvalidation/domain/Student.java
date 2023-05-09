@@ -1,7 +1,8 @@
 package com.example.block7crudvalidation.domain;
 
 import com.example.block7crudvalidation.controller.dto.StudentInputDto;
-import com.example.block7crudvalidation.controller.dto.StudentOutputDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputFullDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,7 +22,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_Persona")
     private Persona persona;
     @NotNull
@@ -40,24 +40,40 @@ public class Student {
     @ManyToMany(mappedBy = "student")
     private Set<Alumnos_Estudios> estudios;
 
-    public StudentOutputDto studentToStudentOutputDto(){
-        return new StudentOutputDto(
+    public StudentOutputFullDto studentToStudentOutputFullDto() {
+        return new StudentOutputFullDto(
                 this.id,
-                this.persona,
                 this.num_hours_week,
                 this.comments,
                 this.branch,
-                this.profesor,
-                this.estudios
+                this.persona.getId(),
+                this.persona.getUsuario(),
+                this.persona.getPassword(),
+                this.persona.getName(),
+                this.persona.getSurname(),
+                this.persona.getCompany_email(),
+                this.persona.getPersonal_email(),
+                this.persona.getCity(),
+                this.persona.getActive(),
+                this.persona.getCreate_date(),
+                this.persona.getImage_url(),
+                this.persona.getTermination_date()
+        );
+    }
+
+    public StudentOutputSimpleDto studentToStudentOutputSimpleDto() {
+        return new StudentOutputSimpleDto(
+                this.id,
+                this.num_hours_week,
+                this.comments,
+                this.branch
         );
     }
     public Student(StudentInputDto studentInputDto){
-        this.id = studentInputDto.getId();
-        this.persona = studentInputDto.getPersona();
+        persona = new Persona();
+        this.persona.setId(studentInputDto.getIdPersona());
         this.num_hours_week = studentInputDto.getNum_hours_week();
         this.comments = studentInputDto.getComments();
         this.branch = studentInputDto.getBranch();
-        this.profesor = studentInputDto.getProfesor();
-        this.estudios = studentInputDto.getEstudiosList();
     }
 }

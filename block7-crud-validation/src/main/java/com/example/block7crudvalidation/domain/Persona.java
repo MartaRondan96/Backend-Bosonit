@@ -36,13 +36,12 @@ public class Persona {
     private String image_url;
     private Date termination_date;
      //Student-Persona relacion OneToOne
-     @OneToOne
+     @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL)
      private Student student;
     //Profesor-Persona relacion OneToOne
-     @OneToOne
+     @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL)
      private Profesor profesor;
     public Persona(PersonaInputDto personaInputDTO){
-        this.id = personaInputDTO.getId();
         this.usuario = personaInputDTO.getUsuario();
         this.password = personaInputDTO.getPassword();
         this.name = personaInputDTO.getName();

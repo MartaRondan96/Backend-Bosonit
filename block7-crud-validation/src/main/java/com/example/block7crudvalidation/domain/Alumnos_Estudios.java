@@ -28,7 +28,7 @@ public class Alumnos_Estudios {
     @JoinColumn(name = "id_Profesor")
     private Profesor profesor;
     //ManyToMany -> un estudio tiene n estudiantes
-    @ManyToMany(mappedBy = "estudios")
+    @ManyToMany
     private Set<Student> student;
     @Column(name = "asignatura")
     private String asignatura;
@@ -44,8 +44,7 @@ public class Alumnos_Estudios {
     public Alumnos_EstudiosOutputDto estudioToEstudioOutputDto(){
         return new Alumnos_EstudiosOutputDto(
           this.id,
-          this.profesor,
-          this.student,
+          this.profesor.getId(),
           this.asignatura,
           this.comment,
           this.initial_date,
@@ -54,9 +53,8 @@ public class Alumnos_Estudios {
     }
 
     public Alumnos_Estudios(Alumnos_EstudiosInputDto alumnos_EstudiosInputDto){
-        this.id = alumnos_EstudiosInputDto.getId();
-        this.profesor = alumnos_EstudiosInputDto.getProfesor();
-        this.student = alumnos_EstudiosInputDto.getStudentList();
+        Profesor profesor = new Profesor();
+        profesor.setId(alumnos_EstudiosInputDto.getIdProfesor());
         this.asignatura = alumnos_EstudiosInputDto.getAsignatura();
         this.comment = alumnos_EstudiosInputDto.getComment();
         this.initial_date = alumnos_EstudiosInputDto.getInitialDate();

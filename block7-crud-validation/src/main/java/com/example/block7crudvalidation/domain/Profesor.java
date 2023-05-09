@@ -19,7 +19,7 @@ public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="id_Persona")
     private Persona persona;
     private String comments;
@@ -32,17 +32,15 @@ public class Profesor {
     public ProfesorOutputDto profesorToProfesorOutputDto(){
         return new ProfesorOutputDto(
                 this.id,
-                this.persona,
+                this.persona.getId(),
                 this.comments,
-                this.branch,
-                this.studentList
+                this.branch
         );
     }
     public Profesor(ProfesorInputDto profesorInputDto){
-        this.id = profesorInputDto.getId();
-        this.persona = profesorInputDto.getPersona();
+        Persona persona = new Persona();
+        persona.setId(profesorInputDto.getId());
         this.comments = profesorInputDto.getComments();
         this.branch = profesorInputDto.getBranch();
-        this.studentList = profesorInputDto.getStudentList();
     }
 }

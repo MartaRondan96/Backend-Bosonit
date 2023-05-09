@@ -10,7 +10,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersonaInputDto {
-    private int id;
     private String usuario;
     private String password;
     private String name;

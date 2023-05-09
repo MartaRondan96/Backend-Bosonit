@@ -8,7 +8,9 @@ import com.example.block7crudvalidation.exception.EntityNotFoundException;
 import com.example.block7crudvalidation.repository.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProfesorServiceImpl implements ProfesorService{
     @Autowired
     private ProfesorRepository profesorRepository;

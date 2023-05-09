@@ -40,7 +40,7 @@ public class PersonaController {
             return ResponseEntity.notFound().build();
         }
     }
-    //    Mostrar todos los registros.
+    //Mostrar todos los registros.
 
     @GetMapping
     public Iterable<PersonaOutputDto> getAllPersonas(

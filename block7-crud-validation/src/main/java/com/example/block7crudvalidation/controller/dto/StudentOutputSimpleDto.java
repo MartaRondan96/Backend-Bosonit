@@ -8,19 +8,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentOutputDto {
+public class StudentOutputSimpleDto {
     Integer id;
-    Persona persona;
     int num_hours_week;
     String comments;
     String branch;
-    Profesor profesor;
-    Set<Alumnos_Estudios> estudiosList;
 }

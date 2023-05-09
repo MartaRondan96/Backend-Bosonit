@@ -16,12 +16,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Alumnos_EstudiosInputDto {
-    Integer id;
-    Profesor profesor;
-    Set<Student> studentList;
+    Integer idProfesor;
     String asignatura;
     String comment;
     Date initialDate;
     Date finishDate;
-
 }
