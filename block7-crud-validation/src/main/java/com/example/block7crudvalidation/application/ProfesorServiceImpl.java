@@ -2,9 +2,11 @@ package com.example.block7crudvalidation.application;
 
 import com.example.block7crudvalidation.controller.dto.ProfesorInputDto;
 import com.example.block7crudvalidation.controller.dto.ProfesorOutputDto;
+import com.example.block7crudvalidation.domain.Persona;
 import com.example.block7crudvalidation.domain.Profesor;
 import com.example.block7crudvalidation.domain.Student;
 import com.example.block7crudvalidation.exception.EntityNotFoundException;
+import com.example.block7crudvalidation.repository.PersonaRepository;
 import com.example.block7crudvalidation.repository.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Service;
 public class ProfesorServiceImpl implements ProfesorService{
     @Autowired
     private ProfesorRepository profesorRepository;
+    @Autowired
+    private PersonaRepository personaRepository;
     @Override
     public ProfesorOutputDto getProfesorById(int id) {
         if(profesorRepository.findById(id).isEmpty()) {
@@ -26,8 +30,11 @@ public class ProfesorServiceImpl implements ProfesorService{
     }
 
     @Override
-    public ProfesorOutputDto addProfesor(ProfesorInputDto profesor) {
-        return profesorRepository.save(new Profesor(profesor)).profesorToProfesorOutputDto();
+    public ProfesorOutputDto addProfesor(ProfesorInputDto profesorDto) {
+        Persona persona = personaRepository.findById(profesorDto.getIdPersona()).orElseThrow();
+        Profesor profesor = new Profesor(profesorDto);
+        profesor.setPersona(persona);
+        return profesorRepository.save(profesor).profesorToProfesorOutputDto();
     }
 
     @Override
