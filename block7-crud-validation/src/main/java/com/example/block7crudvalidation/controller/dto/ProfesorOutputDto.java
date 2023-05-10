@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ProfesorOutputDto {
     Integer id;
-    Integer idPersona;
+    PersonaOutputDto persona;
     String comments;
     String branch;
 }

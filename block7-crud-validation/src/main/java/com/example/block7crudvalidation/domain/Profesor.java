@@ -32,14 +32,14 @@ public class Profesor {
     public ProfesorOutputDto profesorToProfesorOutputDto(){
         return new ProfesorOutputDto(
                 this.id,
-                this.persona.getId(),
+                this.persona.personaToPersonaOutputDTO(),
                 this.comments,
                 this.branch
         );
     }
     public Profesor(ProfesorInputDto profesorInputDto){
         Persona persona = new Persona();
-        persona.setId(profesorInputDto.getId());
+        persona.setId(persona.getId());
         this.comments = profesorInputDto.getComments();
         this.branch = profesorInputDto.getBranch();
     }

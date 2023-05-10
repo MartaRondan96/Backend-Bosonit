@@ -43,21 +43,10 @@ public class Student {
     public StudentOutputFullDto studentToStudentOutputFullDto() {
         return new StudentOutputFullDto(
                 this.id,
+                this.persona.personaToPersonaOutputDTO(),
                 this.num_hours_week,
                 this.comments,
-                this.branch,
-                this.persona.getId(),
-                this.persona.getUsuario(),
-                this.persona.getPassword(),
-                this.persona.getName(),
-                this.persona.getSurname(),
-                this.persona.getCompany_email(),
-                this.persona.getPersonal_email(),
-                this.persona.getCity(),
-                this.persona.getActive(),
-                this.persona.getCreate_date(),
-                this.persona.getImage_url(),
-                this.persona.getTermination_date()
+                this.branch
         );
     }
 

@@ -14,7 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProfesorInputDto {
-    Integer id;
     Integer idPersona;
     String comments;
     String branch;

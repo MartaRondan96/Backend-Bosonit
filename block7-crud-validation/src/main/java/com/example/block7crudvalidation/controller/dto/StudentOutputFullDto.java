@@ -17,19 +17,8 @@ import java.util.Set;
 @AllArgsConstructor
 public class StudentOutputFullDto {
     Integer id;
+    PersonaOutputDto persona;
     int num_hours_week;
     String comments;
     String branch;
-    Integer idPersona;
-    String usuario;
-    String password;
-    String name;
-    String surname;
-    String company_email;
-    String personal_email;
-    String city;
-    Boolean active;
-    Date create_date;
-    String imagen_url;
-    Date termination_date;
 }
