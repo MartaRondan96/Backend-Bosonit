@@ -27,13 +27,15 @@ public class PersonaController {
     }
     //    Buscar por ID
     @GetMapping("/{id}")
-    public ResponseEntity<PersonaOutputDto> getPersonaId(@PathVariable int id) throws EntityNotFoundException {
-        personaService.getPersonaById(id);
-        return ResponseEntity.ok().body(personaService.getPersonaById(id));
+    public ResponseEntity<Object> getPersonaId(@RequestParam(value = "outputType",defaultValue = "simple") String outputType,
+                                                         @PathVariable int id) throws EntityNotFoundException {
+        personaService.getPersonaById(id, outputType);
+        return ResponseEntity.ok().body(personaService.getPersonaById(id,outputType));
     }
     //    Buscar por nombre de usuario (campo usuario)
     @GetMapping("/usuario/{usuario}")
-    public ResponseEntity<PersonaOutputDto> getPersonaUsuario(@PathVariable String usuario) {
+    public ResponseEntity<PersonaOutputDto> getPersonaUsuario(@RequestParam(value = "outputType",defaultValue = "simple")String outputType,
+                                                              @PathVariable String usuario) {
         try {
             return ResponseEntity.ok().body(personaService.getPersonaByUsuario(usuario));
         } catch (Exception e) {
@@ -43,7 +45,7 @@ public class PersonaController {
     //Mostrar todos los registros.
 
     @GetMapping
-    public Iterable<PersonaOutputDto> getAllPersonas(
+    public Iterable<PersonaOutputDto> getAllPersonas(@RequestParam(value = "outputType",defaultValue = "simple")String outputType,
             @RequestParam(defaultValue = "0", required = false) int numPages,
             @RequestParam(defaultValue = "4", required = false) int pageSize)
         {

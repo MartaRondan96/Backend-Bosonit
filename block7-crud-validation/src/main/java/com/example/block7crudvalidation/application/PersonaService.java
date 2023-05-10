@@ -8,6 +8,7 @@ import com.example.block7crudvalidation.exception.UnprocessableEntityException;
 
 public interface PersonaService {
     PersonaOutputDto getPersonaById(int id) throws EntityNotFoundException;
+    Object getPersonaById(int id, String outputType) throws EntityNotFoundException;
     PersonaOutputDto addPersona(PersonaInputDto persona) throws Exception;
     PersonaOutputDto updatePersona(PersonaInputDto persona, int id) throws EntityNotFoundException, UnprocessableEntityException;
     void deletePersonaById(int id) throws EntityNotFoundException;

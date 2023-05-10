@@ -2,7 +2,7 @@ package com.example.block7crudvalidation.controller;
 
 import com.example.block7crudvalidation.application.ProfesorService;
 import com.example.block7crudvalidation.controller.dto.ProfesorInputDto;
-import com.example.block7crudvalidation.controller.dto.ProfesorOutputDto;
+import com.example.block7crudvalidation.controller.dto.ProfesorFullOutputDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,24 +17,24 @@ public class ProfesorController {
     private ProfesorService profesorService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProfesorOutputDto> getProfesorId(@PathVariable int id){
+    public ResponseEntity<ProfesorFullOutputDto> getProfesorId(@PathVariable int id){
         profesorService.getProfesorById(id);
         return ResponseEntity.ok().body(profesorService.getProfesorById(id));
     }
 
     @GetMapping
-    public Iterable<ProfesorOutputDto> getAllProfesor(@RequestParam(defaultValue = "0", required = false) int numPages,
+    public Iterable<ProfesorFullOutputDto> getAllProfesor(@RequestParam(defaultValue = "0", required = false) int numPages,
                                                             @RequestParam(defaultValue = "4", required = false) int pageSize){
         return profesorService.getAllProfesors(numPages, pageSize);
     }
 
     @PostMapping
-    public ResponseEntity<ProfesorOutputDto> addProfesor(@Valid @RequestBody ProfesorInputDto profesor){
+    public ResponseEntity<ProfesorFullOutputDto> addProfesor(@Valid @RequestBody ProfesorInputDto profesor) throws Exception {
         URI location = URI.create("/profesor");
         return ResponseEntity.created(location).body(profesorService.addProfesor(profesor));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<ProfesorOutputDto> updateStudent (@Valid @RequestBody ProfesorInputDto profesor, @PathVariable int id){
+    public ResponseEntity<ProfesorFullOutputDto> updateStudent (@Valid @RequestBody ProfesorInputDto profesor, @PathVariable int id){
         profesorService.updateProfesor(profesor,id);
         return ResponseEntity.ok().body(profesorService.getProfesorById(id));
     }

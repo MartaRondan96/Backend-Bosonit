@@ -35,7 +35,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<StudentOutputFullDto> addStudent(@Valid @RequestBody StudentInputDto student){
+    public ResponseEntity<StudentOutputFullDto> addStudent(@Valid @RequestBody StudentInputDto student) throws Exception {
         URI location = URI.create("/student");
         return ResponseEntity.created(location).body(studentService.addStudent(student));
     }

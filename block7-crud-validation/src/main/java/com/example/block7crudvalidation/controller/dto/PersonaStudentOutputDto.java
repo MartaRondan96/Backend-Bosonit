@@ -5,11 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonaOutputDto {
+public class PersonaStudentOutputDto {
     private int id;
     private String usuario;
     private String password;
@@ -23,6 +22,5 @@ public class PersonaOutputDto {
     private String image_url;
     private Date termination_date;
     private String profesion;
-
-
+    private StudentOutputSimpleDto student;
 }

@@ -3,9 +3,11 @@ package com.example.block7crudvalidation.application;
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
 import com.example.block7crudvalidation.domain.Persona;
+import com.example.block7crudvalidation.domain.Student;
 import com.example.block7crudvalidation.exception.EntityNotFoundException;
 import com.example.block7crudvalidation.exception.UnprocessableEntityException;
 import com.example.block7crudvalidation.repository.PersonaRepository;
+import com.example.block7crudvalidation.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Service;
 public class PersonaServiceImpl implements PersonaService{
     @Autowired
     PersonaRepository personaRepository;
+    @Autowired
+    StudentRepository studentRepository;
     @Override
     public PersonaOutputDto getPersonaById(int id) throws EntityNotFoundException {
         if(personaRepository.findById(id).isEmpty()) {
@@ -23,6 +27,22 @@ public class PersonaServiceImpl implements PersonaService{
             return personaRepository.findById(id).orElseThrow()
                     .personaToPersonaOutputDTO();
         }
+    }
+
+    @Override
+    public Object getPersonaById(int id, String outputType) throws EntityNotFoundException {
+        Persona persona = personaRepository.findById(id).orElseThrow();
+        if(outputType.equalsIgnoreCase("full") && persona.getProfesion()!=null) {
+            if (persona.getProfesion().equalsIgnoreCase("estudiante")) {
+                Student s = studentRepository.findByPersona(persona);
+                persona.setStudent(s);
+                return persona.personaToPersonaStudentOutputDTO();
+            }
+            if (persona.getProfesion().equalsIgnoreCase("profesor")) {
+                return persona.personaToPersonaProfesorOutputDTO();
+            }
+        }
+        return persona.personaToPersonaOutputDTO();
     }
 
     @Override

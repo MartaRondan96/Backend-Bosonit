@@ -1,10 +1,9 @@
 package com.example.block7crudvalidation.application;
 
 import com.example.block7crudvalidation.controller.dto.ProfesorInputDto;
-import com.example.block7crudvalidation.controller.dto.ProfesorOutputDto;
+import com.example.block7crudvalidation.controller.dto.ProfesorFullOutputDto;
 import com.example.block7crudvalidation.domain.Persona;
 import com.example.block7crudvalidation.domain.Profesor;
-import com.example.block7crudvalidation.domain.Student;
 import com.example.block7crudvalidation.exception.EntityNotFoundException;
 import com.example.block7crudvalidation.repository.PersonaRepository;
 import com.example.block7crudvalidation.repository.ProfesorRepository;
@@ -19,33 +18,36 @@ public class ProfesorServiceImpl implements ProfesorService{
     @Autowired
     private PersonaRepository personaRepository;
     @Override
-    public ProfesorOutputDto getProfesorById(int id) {
+    public ProfesorFullOutputDto getProfesorById(int id) {
         if(profesorRepository.findById(id).isEmpty()) {
             throw new EntityNotFoundException("NOT FOUND: No se encuentra un profesor con ese ID");
         }
         else {
             return profesorRepository.findById(id).orElseThrow()
-                    .profesorToProfesorOutputDto();
+                    .profesorToProfesorFullOutputDto();
         }
     }
 
     @Override
-    public ProfesorOutputDto addProfesor(ProfesorInputDto profesorDto) {
+    public ProfesorFullOutputDto addProfesor(ProfesorInputDto profesorDto) throws Exception {
         Persona persona = personaRepository.findById(profesorDto.getIdPersona()).orElseThrow();
+        if(persona.getProfesion()!=null)
+            throw new Exception("La persona ya tiene profesion asignada");
+        persona.setProfesion("Profesor");
         Profesor profesor = new Profesor(profesorDto);
         profesor.setPersona(persona);
-        return profesorRepository.save(profesor).profesorToProfesorOutputDto();
+        return profesorRepository.save(profesor).profesorToProfesorFullOutputDto();
     }
 
     @Override
-    public ProfesorOutputDto updateProfesor(ProfesorInputDto profesor, int id) {
+    public ProfesorFullOutputDto updateProfesor(ProfesorInputDto profesor, int id) {
         if (profesorRepository.findById(id).isEmpty()) {
             throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
         }
         Profesor profesorAct = profesorRepository.findById(id).orElseThrow();
 
         return profesorRepository.save(profesorAct)
-                .profesorToProfesorOutputDto();
+                .profesorToProfesorFullOutputDto();
     }
 
     @Override
@@ -57,10 +59,10 @@ public class ProfesorServiceImpl implements ProfesorService{
     }
 
     @Override
-    public Iterable<ProfesorOutputDto> getAllProfesors(int numPages, int pageSize) {
+    public Iterable<ProfesorFullOutputDto> getAllProfesors(int numPages, int pageSize) {
         PageRequest pageRequest = PageRequest.of(numPages, pageSize);
         return profesorRepository.findAll(pageRequest).getContent()
                 .stream()
-                .map(Profesor::profesorToProfesorOutputDto).toList();
+                .map(Profesor::profesorToProfesorFullOutputDto).toList();
     }
 }

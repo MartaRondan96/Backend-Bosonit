@@ -1,9 +1,6 @@
 package com.example.block7crudvalidation.domain;
 
-import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
-import com.example.block7crudvalidation.controller.dto.ProfesorInputDto;
-import com.example.block7crudvalidation.controller.dto.ProfesorOutputDto;
-import com.example.block7crudvalidation.controller.dto.StudentInputDto;
+import com.example.block7crudvalidation.controller.dto.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -29,10 +26,17 @@ public class Profesor {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Student> studentList;
 
-    public ProfesorOutputDto profesorToProfesorOutputDto(){
-        return new ProfesorOutputDto(
+    public ProfesorFullOutputDto profesorToProfesorFullOutputDto(){
+        return new ProfesorFullOutputDto(
                 this.id,
                 this.persona.personaToPersonaOutputDTO(),
+                this.comments,
+                this.branch
+        );
+    }
+    public ProfesorSimpleOutputDto profesorToProfesorSimpleOutputDto(){
+        return new ProfesorSimpleOutputDto(
+                this.id,
                 this.comments,
                 this.branch
         );

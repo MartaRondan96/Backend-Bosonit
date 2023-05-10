@@ -2,6 +2,8 @@ package com.example.block7crudvalidation.domain;
 
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
+import com.example.block7crudvalidation.controller.dto.PersonaProfOutputDto;
+import com.example.block7crudvalidation.controller.dto.PersonaStudentOutputDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -41,6 +43,7 @@ public class Persona {
     //Profesor-Persona relacion OneToOne
      @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL)
      private Profesor profesor;
+     String profesion;
     public Persona(PersonaInputDto personaInputDTO){
         this.usuario = personaInputDTO.getUsuario();
         this.password = personaInputDTO.getPassword();
@@ -67,7 +70,46 @@ public class Persona {
                 this.active,
                 this.create_date,
                 this.image_url,
-                this.termination_date
+                this.termination_date,
+                this.profesion
+        );
+    }
+
+    public PersonaStudentOutputDto personaToPersonaStudentOutputDTO() {
+        return new PersonaStudentOutputDto(
+                this.id,
+                this.usuario,
+                this.password,
+                this.name,
+                this.surname,
+                this.company_email,
+                this.personal_email,
+                this.city,
+                this.active,
+                this.create_date,
+                this.image_url,
+                this.termination_date,
+                this.profesion,
+                this.student.studentToStudentOutputSimpleDto()
+        );
+    }
+
+    public PersonaProfOutputDto personaToPersonaProfesorOutputDTO() {
+        return new PersonaProfOutputDto(
+                this.id,
+                this.usuario,
+                this.password,
+                this.name,
+                this.surname,
+                this.company_email,
+                this.personal_email,
+                this.city,
+                this.active,
+                this.create_date,
+                this.image_url,
+                this.termination_date,
+                this.profesion,
+                this.profesor.profesorToProfesorSimpleOutputDto()
         );
     }
 }

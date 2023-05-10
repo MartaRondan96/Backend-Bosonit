@@ -7,7 +7,7 @@ import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
 public interface StudentService {
     StudentOutputFullDto getFullStudentById(int id);
     StudentOutputSimpleDto getSimpleStudentById(int id);
-    StudentOutputFullDto addStudent(StudentInputDto student);
+    StudentOutputFullDto addStudent(StudentInputDto student) throws Exception;
     StudentOutputFullDto updateStudent(StudentInputDto student, int id);
     void deleteStudentById(int id);
     Iterable<StudentOutputFullDto> getAllStudents(int numPage, int pageSize);

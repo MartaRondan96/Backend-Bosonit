@@ -40,8 +40,11 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public StudentOutputFullDto addStudent(StudentInputDto studentDto) {
+    public StudentOutputFullDto addStudent(StudentInputDto studentDto) throws Exception {
         Persona persona = personaRepository.findById(studentDto.getIdPersona()).orElseThrow();
+        if(persona.getProfesion()!=null)
+            throw new Exception("La persona ya tiene profesion asignada");
+        persona.setProfesion("Estudiante");
         Student student = new Student(studentDto);
         student.setPersona(persona);
         return studentRepository.save(student).studentToStudentOutputFullDto();
