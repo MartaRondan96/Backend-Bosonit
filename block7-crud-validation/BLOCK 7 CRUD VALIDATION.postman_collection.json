@@ -7,140 +7,526 @@
 	},
 	"item": [
 		{
-			"name": "addPersona",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"usuario\" : \"MartaR\",\r\n    \"password\" : \"12345678\",\r\n    \"name\" : \"Marta\",\r\n    \"surname\" : \"Rondan\",\r\n    \"company_email\" : \"marta@company.com\",\r\n    \"personal_email\" : \"marta@personal.com\",\r\n    \"city\" : \"Cádiz\",\r\n    \"active\" : true,\r\n    \"create_date\" : \"2019-05-10\",\r\n    \"image_url\" : \"image_url\",\r\n    \"termination_date\" : \"2019-06-08\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "CRUD Persona",
+			"item": [
+				{
+					"name": "addPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\" : \"MartaR\",\r\n    \"password\" : \"12345678\",\r\n    \"name\" : \"Marta\",\r\n    \"surname\" : \"Rondan\",\r\n    \"company_email\" : \"marta@company.com\",\r\n    \"personal_email\" : \"marta@personal.com\",\r\n    \"city\" : \"Cádiz\",\r\n    \"active\" : true,\r\n    \"create_date\" : \"2019-05-10\",\r\n    \"image_url\" : \"image_url\",\r\n    \"termination_date\" : \"2019-06-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/persona",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persona"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8080/persona",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"persona"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getAllPersonas",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/persona",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"persona"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getPersonaById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/persona/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"persona",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getPersonaUsuario",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/persona/usuario/MartaR",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"persona",
-						"usuario",
-						"MartaR"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deletePersona",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/persona?id=3",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"persona"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "3"
+				{
+					"name": "getAllPersonas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/persona",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persona"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updatePersona",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"Mario\",\r\n    \"surname\" : \"Cherbuy\",\r\n    \"company_email\" : \"mario@company.com\",\r\n    \"personal_email\" : \"mario@personal.com\",\r\n    \"city\" : \"Cádiz\",\r\n    \"active\" : true,\r\n    \"create_date\" : \"2019-05-10\",\r\n    \"image_url\" : \"image_url\",\r\n    \"termination_date\" : \"2019-06-08\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8080/persona/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"persona",
-						"2"
-					]
+				{
+					"name": "getPersonaById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/persona/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persona",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPersonaUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/persona/usuario/Mar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persona",
+								"usuario",
+								"Mar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePersona",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/persona?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persona"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePersona",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Mario\",\r\n    \"surname\" : \"Cherbuy\",\r\n    \"company_email\" : \"mario@company.com\",\r\n    \"personal_email\" : \"mario@personal.com\",\r\n    \"city\" : \"Cádiz\",\r\n    \"active\" : true,\r\n    \"create_date\" : \"2019-05-10\",\r\n    \"image_url\" : \"image_url\",\r\n    \"termination_date\" : \"2019-06-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/persona/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persona",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "CRUD Student",
+			"item": [
+				{
+					"name": "addStudent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPersona\" : 2,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteStudent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student?id=52",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStudent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPersona\" : 52,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentarios\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStudent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student/2?outputType=full",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"2"
+							],
+							"query": [
+								{
+									"key": "outputType",
+									"value": "full"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllStudents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD Profesor",
+			"item": [
+				{
+					"name": "addProfesor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPersona\" : 2,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProfesor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student?id=52",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfesor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPersona\" : 52,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentarios\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfesor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student/2?outputType=full",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"2"
+							],
+							"query": [
+								{
+									"key": "outputType",
+									"value": "full"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProfesores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD Estudios",
+			"item": [
+				{
+					"name": "addEstudios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPersona\" : 2,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEstudios",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student?id=52",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEstudios",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPersona\" : 52,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentarios\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEstudios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student/2?outputType=full",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"2"
+							],
+							"query": [
+								{
+									"key": "outputType",
+									"value": "full"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllEstudios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

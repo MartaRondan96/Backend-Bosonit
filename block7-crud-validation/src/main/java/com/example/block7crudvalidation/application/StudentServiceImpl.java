@@ -51,12 +51,14 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public StudentOutputFullDto updateStudent(StudentInputDto student, int id) {
+    public StudentOutputFullDto updateStudent(StudentInputDto studentDto, int id) {
         if (studentRepository.findById(id).isEmpty()) {
             throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
         }
         Student studentAct = studentRepository.findById(id).orElseThrow();
-
+        studentAct.setNum_hours_week(studentDto.getNum_hours_week());
+        studentAct.setBranch(studentDto.getBranch());
+        studentAct.setComments(studentDto.getComments());
         return studentRepository.save(studentAct)
                 .studentToStudentOutputFullDto();
     }
@@ -65,7 +67,9 @@ public class StudentServiceImpl implements StudentService{
     public void deleteStudentById(int id) {
         if (studentRepository.findById(id).isEmpty())
             throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
-
+        Student student = studentRepository.findById(id).orElseThrow();
+        Persona persona = personaRepository.findById(student.getPersona().getId()).orElseThrow();
+        persona.setProfesion("null");
         studentRepository.deleteById(id);
     }
 

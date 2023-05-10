@@ -40,9 +40,9 @@ public class StudentController {
         return ResponseEntity.created(location).body(studentService.addStudent(student));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<StudentOutputFullDto> updateStudent (@Valid @RequestBody StudentInputDto student, @PathVariable int id){
+    public ResponseEntity<StudentOutputFullDto> updateStudent (@Valid @RequestBody StudentInputDto student, @PathVariable int id) throws Exception {
         studentService.updateStudent(student,id);
-        return ResponseEntity.ok().body(studentService.getFullStudentById(id));
+        return  ResponseEntity.ok().body(studentService.getFullStudentById(id));
     }
 
     @DeleteMapping

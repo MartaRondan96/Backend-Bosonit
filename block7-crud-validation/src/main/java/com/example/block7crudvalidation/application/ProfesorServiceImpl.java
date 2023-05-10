@@ -4,6 +4,7 @@ import com.example.block7crudvalidation.controller.dto.ProfesorInputDto;
 import com.example.block7crudvalidation.controller.dto.ProfesorFullOutputDto;
 import com.example.block7crudvalidation.domain.Persona;
 import com.example.block7crudvalidation.domain.Profesor;
+import com.example.block7crudvalidation.domain.Student;
 import com.example.block7crudvalidation.exception.EntityNotFoundException;
 import com.example.block7crudvalidation.repository.PersonaRepository;
 import com.example.block7crudvalidation.repository.ProfesorRepository;
@@ -45,7 +46,8 @@ public class ProfesorServiceImpl implements ProfesorService{
             throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
         }
         Profesor profesorAct = profesorRepository.findById(id).orElseThrow();
-
+        profesorAct.setBranch(profesor.getBranch());
+        profesorAct.setComments(profesor.getComments());
         return profesorRepository.save(profesorAct)
                 .profesorToProfesorFullOutputDto();
     }
@@ -54,6 +56,11 @@ public class ProfesorServiceImpl implements ProfesorService{
     public void deleteProfesorById(int id) {
         if (profesorRepository.findById(id).isEmpty())
             throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
+
+        Profesor profesor = profesorRepository.findById(id).orElseThrow();
+        Persona persona = personaRepository.findById(profesor.getPersona().getId()).orElseThrow();
+        persona.setProfesion("null");
+
         profesorRepository.deleteById(id);
 
     }
