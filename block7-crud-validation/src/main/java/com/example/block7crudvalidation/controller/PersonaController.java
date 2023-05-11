@@ -56,6 +56,8 @@ public class PersonaController {
         personaService.updatePersona(Persona,id);
         return ResponseEntity.ok().body(personaService.getPersonaById(id));
     }
+    //Al borrar una persona que tiene profesion asignada borra en cascada el profesor o estudiante que tenga asignado
+    //el idPersona que se va a borrar
     @DeleteMapping
     public ResponseEntity<String> deletePersonaById(@RequestParam int id) {
         try {

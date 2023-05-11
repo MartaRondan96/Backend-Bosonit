@@ -32,18 +32,18 @@ public class Alumnos_EstudiosController {
     }
 
     @PostMapping
-    public ResponseEntity<Alumnos_EstudiosOutputDto> addStudent(@Valid @RequestBody Alumnos_EstudiosInputDto estudio){
+    public ResponseEntity<Alumnos_EstudiosOutputDto> addEstudio(@Valid @RequestBody Alumnos_EstudiosInputDto estudio){
         URI location = URI.create("/estudio");
         return ResponseEntity.created(location).body(estudiosService.addEstudio(estudio));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Alumnos_EstudiosOutputDto> updateStudent (@Valid @RequestBody Alumnos_EstudiosInputDto estudio, @PathVariable int id){
+    public ResponseEntity<Alumnos_EstudiosOutputDto> updateEstudio (@Valid @RequestBody Alumnos_EstudiosInputDto estudio, @PathVariable int id){
         estudiosService.updateEstudio(estudio,id);
         return ResponseEntity.ok().body(estudiosService.getEstudioById(id));
     }
 
     @DeleteMapping
-    public ResponseEntity<String> deleteStudent (@RequestParam int id){
+    public ResponseEntity<String> deleteEstudio (@RequestParam int id){
         try {
             estudiosService.deleteEstudioById(id);
             return ResponseEntity.ok().body("Estudio con id " + id + " eliminado.");

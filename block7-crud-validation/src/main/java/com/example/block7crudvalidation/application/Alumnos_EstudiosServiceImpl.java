@@ -8,6 +8,7 @@ import com.example.block7crudvalidation.domain.Alumnos_Estudios;
 import com.example.block7crudvalidation.domain.Profesor;
 import com.example.block7crudvalidation.domain.Student;
 import com.example.block7crudvalidation.exception.EntityNotFoundException;
+import com.example.block7crudvalidation.exception.UnprocessableEntityException;
 import com.example.block7crudvalidation.repository.Alumnos_EstudiosRepository;
 import com.example.block7crudvalidation.repository.ProfesorRepository;
 import com.example.block7crudvalidation.repository.StudentRepository;
@@ -63,8 +64,10 @@ public class Alumnos_EstudiosServiceImpl implements Alumnos_EstudiosService{
     public void deleteEstudioById(int id) {
         if (estudiosRepository.findById(id).isEmpty())
             throw new EntityNotFoundException("NOT FOUND: No se encuentra una persona con ese ID");
+        Alumnos_Estudios estudio = estudiosRepository.findById(id).orElseThrow();
+        if(estudio.getStudent()!= null)
+            throw new UnprocessableEntityException("La asignatura no se puede borrar porque tiene alumnos asignados");
         estudiosRepository.deleteById(id);
-
     }
 
     @Override
