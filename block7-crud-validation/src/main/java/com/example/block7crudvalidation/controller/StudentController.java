@@ -3,12 +3,14 @@ package com.example.block7crudvalidation.controller;
 import com.example.block7crudvalidation.application.StudentService;
 import com.example.block7crudvalidation.controller.dto.StudentInputDto;
 import com.example.block7crudvalidation.controller.dto.StudentOutputFullDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -50,6 +52,26 @@ public class StudentController {
         try {
             studentService.deleteStudentById(id);
             return ResponseEntity.ok().body("Student con id " + id + " eliminado.");
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("addAsignatura/{id}")
+    public ResponseEntity<StudentOutputSimpleDto> addEstudiosToStudent(@PathVariable int id, @RequestBody List<Integer> IdList){
+        try {
+            studentService.addEstudiosToStudent(id, IdList);
+            return ResponseEntity.ok().body(studentService.getSimpleStudentById(id));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("removeAsignatura/{id}")
+    public ResponseEntity<StudentOutputSimpleDto> removeEstudiosToStudent(@PathVariable int id, @RequestBody List<Integer> IdList){
+        try {
+            studentService.removeEstudiosToStudent(id, IdList);
+            return ResponseEntity.ok().body(studentService.getSimpleStudentById(id));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
