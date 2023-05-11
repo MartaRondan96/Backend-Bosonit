@@ -1,5 +1,6 @@
 package com.example.block7crudvalidation.domain;
 
+import com.example.block7crudvalidation.controller.dto.Alumnos_EstudiosOutputDto;
 import com.example.block7crudvalidation.controller.dto.StudentInputDto;
 import com.example.block7crudvalidation.controller.dto.StudentOutputFullDto;
 import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
@@ -10,6 +11,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -41,6 +45,8 @@ public class Student {
     private Set<Alumnos_Estudios> estudios;
 
     public StudentOutputFullDto studentToStudentOutputFullDto() {
+
+
         return new StudentOutputFullDto(
                 this.id,
                 this.persona.personaToPersonaOutputDTO(),
@@ -51,11 +57,16 @@ public class Student {
     }
 
     public StudentOutputSimpleDto studentToStudentOutputSimpleDto() {
+        List<Alumnos_EstudiosOutputDto> asignaturasList = new ArrayList<Alumnos_EstudiosOutputDto>();
+        for(Alumnos_Estudios est : estudios)
+            asignaturasList.add(est.estudioToEstudioOutputDto());
+        Set<Alumnos_EstudiosOutputDto>asignaturas = new HashSet<>(asignaturasList);
         return new StudentOutputSimpleDto(
                 this.id,
                 this.num_hours_week,
                 this.comments,
-                this.branch
+                this.branch,
+                asignaturas
         );
     }
     public Student(StudentInputDto studentInputDto){

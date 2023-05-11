@@ -2,6 +2,8 @@ package com.example.block7crudvalidation.application;
 
 import com.example.block7crudvalidation.controller.dto.Alumnos_EstudiosInputDto;
 import com.example.block7crudvalidation.controller.dto.Alumnos_EstudiosOutputDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputFullDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
 
 public interface Alumnos_EstudiosService {
     Alumnos_EstudiosOutputDto getEstudioById(int id);
@@ -9,4 +11,6 @@ public interface Alumnos_EstudiosService {
     Alumnos_EstudiosOutputDto updateEstudio(Alumnos_EstudiosInputDto estudio, int id);
     void deleteEstudioById(int id);
     Iterable<Alumnos_EstudiosOutputDto> getAllEstudios(int numPage, int pageSize);
+
+    StudentOutputSimpleDto getListAsignaturasByStudent(int idStudent);
 }

@@ -2,14 +2,22 @@ package com.example.block7crudvalidation.application;
 
 import com.example.block7crudvalidation.controller.dto.Alumnos_EstudiosInputDto;
 import com.example.block7crudvalidation.controller.dto.Alumnos_EstudiosOutputDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputFullDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
 import com.example.block7crudvalidation.domain.Alumnos_Estudios;
 import com.example.block7crudvalidation.domain.Profesor;
+import com.example.block7crudvalidation.domain.Student;
 import com.example.block7crudvalidation.exception.EntityNotFoundException;
 import com.example.block7crudvalidation.repository.Alumnos_EstudiosRepository;
 import com.example.block7crudvalidation.repository.ProfesorRepository;
+import com.example.block7crudvalidation.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class Alumnos_EstudiosServiceImpl implements Alumnos_EstudiosService{
@@ -17,6 +25,8 @@ public class Alumnos_EstudiosServiceImpl implements Alumnos_EstudiosService{
     private Alumnos_EstudiosRepository estudiosRepository;
     @Autowired
     private ProfesorRepository profesorRepository;
+    @Autowired
+    private StudentRepository studentRepository;
     @Override
     public Alumnos_EstudiosOutputDto getEstudioById(int id) {
         if(estudiosRepository.findById(id).isEmpty()) {
@@ -63,5 +73,15 @@ public class Alumnos_EstudiosServiceImpl implements Alumnos_EstudiosService{
         return estudiosRepository.findAll(pageRequest).getContent()
                 .stream()
                 .map(Alumnos_Estudios::estudioToEstudioOutputDto).toList();
+    }
+
+    @Override
+    public StudentOutputSimpleDto getListAsignaturasByStudent(int idStudent) {
+        Student student = studentRepository.findById(idStudent).orElseThrow();
+        List<Alumnos_EstudiosOutputDto> asignaturasList = estudiosRepository.findByIdStudent(idStudent).stream().map(Alumnos_Estudios::estudioToEstudioOutputDto).toList();
+        Set<Alumnos_EstudiosOutputDto> estudios = new HashSet<>(asignaturasList);
+
+        return new StudentOutputSimpleDto(student.getId(), student.getNum_hours_week(),
+                student.getComments(), student.getBranch(), estudios);
     }
 }

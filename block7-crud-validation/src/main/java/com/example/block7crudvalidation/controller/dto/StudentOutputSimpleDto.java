@@ -19,4 +19,5 @@ public class StudentOutputSimpleDto {
     int num_hours_week;
     String comments;
     String branch;
+    Set<Alumnos_EstudiosOutputDto> estudios;
 }

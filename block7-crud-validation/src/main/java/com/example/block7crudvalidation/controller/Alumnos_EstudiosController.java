@@ -3,8 +3,11 @@ package com.example.block7crudvalidation.controller;
 import com.example.block7crudvalidation.application.Alumnos_EstudiosService;
 import com.example.block7crudvalidation.controller.dto.Alumnos_EstudiosInputDto;
 import com.example.block7crudvalidation.controller.dto.Alumnos_EstudiosOutputDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputFullDto;
+import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,5 +50,10 @@ public class Alumnos_EstudiosController {
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<StudentOutputSimpleDto> getAsignaturasStudent(@PathVariable int id) {
+        return new ResponseEntity<>(estudiosService.getListAsignaturasByStudent(id), HttpStatus.OK);
     }
 }

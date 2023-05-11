@@ -21,4 +21,5 @@ public class StudentOutputFullDto {
     int num_hours_week;
     String comments;
     String branch;
+
 }
