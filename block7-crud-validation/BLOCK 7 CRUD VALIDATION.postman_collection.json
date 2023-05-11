@@ -60,7 +60,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/persona/2",
+							"raw": "localhost:8080/persona/2?outputType=full",
 							"host": [
 								"localhost"
 							],
@@ -68,6 +68,12 @@
 							"path": [
 								"persona",
 								"2"
+							],
+							"query": [
+								{
+									"key": "outputType",
+									"value": "full"
+								}
 							]
 						}
 					},
@@ -157,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPersona\" : 2,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"raw": "{\r\n    \"idPersona\" : 102,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -284,7 +290,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPersona\" : 2,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"raw": "{\r\n    \"idPersona\" : 1,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -292,13 +298,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/student",
+							"raw": "localhost:8080/profesor",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student"
+								"profesor"
 							]
 						}
 					},
@@ -310,18 +316,18 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/student?id=52",
+							"raw": "localhost:8080/profesor?id=2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student"
+								"profesor"
 							],
 							"query": [
 								{
 									"key": "id",
-									"value": "52"
+									"value": "2"
 								}
 							]
 						}
@@ -335,7 +341,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPersona\" : 52,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentarios\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"raw": "{\r\n    \"idPersona\" : 52,\r\n    \"comments\" : \"comments act\",\r\n    \"branch\" : \"BACK\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -343,14 +349,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/student/2",
+							"raw": "localhost:8080/profesor/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student",
-								"2"
+								"profesor",
+								"1"
 							]
 						}
 					},
@@ -362,20 +368,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/student/2?outputType=full",
+							"raw": "localhost:8080/profesor/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student",
-								"2"
-							],
-							"query": [
-								{
-									"key": "outputType",
-									"value": "full"
-								}
+								"profesor",
+								"1"
 							]
 						}
 					},
@@ -387,13 +387,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/student",
+							"raw": "localhost:8080/profesor",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student"
+								"profesor"
 							]
 						}
 					},
@@ -411,7 +411,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPersona\" : 2,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentario\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"raw": "{\r\n    \"idProfesor\" : 1,\r\n    \"asignatura\" : \"Bases de datos\",\r\n    \"comments\" : \"comentario\",\r\n     \"initialDate\" : \"2019-05-10\",\r\n    \"finishDate\" : \"2019-05-10\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -419,13 +419,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/student",
+							"raw": "localhost:8080/estudios",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student"
+								"estudios"
 							]
 						}
 					},
@@ -437,18 +437,18 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/student?id=52",
+							"raw": "localhost:8080/estudios?id",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student"
+								"estudios"
 							],
 							"query": [
 								{
 									"key": "id",
-									"value": "52"
+									"value": null
 								}
 							]
 						}
@@ -462,7 +462,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPersona\" : 52,\r\n    \"num_hours_week\" : 40,\r\n    \"comments\" : \"comentarios\",\r\n    \"branch\" : \"BACK\"\r\n}",
+							"raw": "{\r\n    \"idProfesor\" : 52,\r\n    \"asignatura\" : \"asignatura\",\r\n    \"comment\" : \"comentarios\",\r\n    \"initialDate\" : \"2019-05-10\",\r\n    \"finishDate\" : \"2019-05-10\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -470,14 +470,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/student/2",
+							"raw": "localhost:8080/estudios/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student",
-								"2"
+								"estudios",
+								"1"
 							]
 						}
 					},
@@ -489,20 +489,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/student/2?outputType=full",
+							"raw": "localhost:8080/estudios/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student",
+								"estudios",
 								"2"
-							],
-							"query": [
-								{
-									"key": "outputType",
-									"value": "full"
-								}
 							]
 						}
 					},
@@ -510,17 +504,24 @@
 				},
 				{
 					"name": "getAllEstudios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "localhost:8080/student",
+							"raw": "localhost:8080/estudios",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"student"
+								"estudios"
 							]
 						}
 					},
