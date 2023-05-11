@@ -53,7 +53,7 @@ public class Alumnos_Estudios {
     }
 
     public Alumnos_Estudios(Alumnos_EstudiosInputDto alumnos_EstudiosInputDto){
-        Profesor profesor = new Profesor();
+        profesor = new Profesor();
         profesor.setId(alumnos_EstudiosInputDto.getIdProfesor());
         this.asignatura = alumnos_EstudiosInputDto.getAsignatura();
         this.comment = alumnos_EstudiosInputDto.getComment();

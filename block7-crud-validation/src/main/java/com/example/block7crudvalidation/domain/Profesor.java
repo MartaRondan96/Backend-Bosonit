@@ -42,7 +42,7 @@ public class Profesor {
         );
     }
     public Profesor(ProfesorInputDto profesorInputDto){
-        Persona persona = new Persona();
+        persona = new Persona();
         persona.setId(persona.getId());
         this.comments = profesorInputDto.getComments();
         this.branch = profesorInputDto.getBranch();
