@@ -7,7 +7,6 @@ import com.example.block7crudvalidation.controller.dto.StudentOutputFullDto;
 import com.example.block7crudvalidation.controller.dto.StudentOutputSimpleDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,8 +51,8 @@ public class Alumnos_EstudiosController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/asignaturas/{id}")
     public ResponseEntity<StudentOutputSimpleDto> getAsignaturasStudent(@PathVariable int id) {
-        return new ResponseEntity<>(estudiosService.getListAsignaturasByStudent(id), HttpStatus.OK);
+        return ResponseEntity.ok().body(estudiosService.getListAsignaturasByStudent(id));
     }
 }

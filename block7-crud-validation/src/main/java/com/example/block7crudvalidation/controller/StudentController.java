@@ -57,7 +57,7 @@ public class StudentController {
         }
     }
 
-    @PutMapping("addAsignatura/{id}")
+    @PutMapping("/addAsignatura/{id}")
     public ResponseEntity<StudentOutputSimpleDto> addEstudiosToStudent(@PathVariable int id, @RequestBody List<Integer> IdList){
         try {
             studentService.addEstudiosToStudent(id, IdList);
@@ -67,7 +67,7 @@ public class StudentController {
         }
     }
 
-    @PutMapping("removeAsignatura/{id}")
+    @PutMapping("/removeAsignatura/{id}")
     public ResponseEntity<StudentOutputSimpleDto> removeEstudiosToStudent(@PathVariable int id, @RequestBody List<Integer> IdList){
         try {
             studentService.removeEstudiosToStudent(id, IdList);

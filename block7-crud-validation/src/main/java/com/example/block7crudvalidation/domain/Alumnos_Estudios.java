@@ -29,6 +29,7 @@ public class Alumnos_Estudios {
     private Profesor profesor;
     //ManyToMany -> un estudio tiene n estudiantes
     @ManyToMany
+    @JoinColumn(name="Student")
     private Set<Student> student;
     @Column(name = "asignatura")
     private String asignatura;
