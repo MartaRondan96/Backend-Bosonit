@@ -57,21 +57,21 @@ public class StudentController {
         }
     }
 
-    @PutMapping("/addAsignatura/{id}")
-    public ResponseEntity<StudentOutputSimpleDto> addEstudiosToStudent(@PathVariable int id, @RequestBody List<Integer> IdList){
+    @PutMapping("/addAsignatura/{idStudent}")
+    public ResponseEntity<StudentOutputSimpleDto> addEstudiosToStudent(@PathVariable int idStudent, @RequestParam("IdList") List<Integer> IdList){
         try {
-            studentService.addEstudiosToStudent(id, IdList);
-            return ResponseEntity.ok().body(studentService.getSimpleStudentById(id));
+            studentService.addEstudiosToStudent(idStudent, IdList);
+            return ResponseEntity.ok().body(studentService.getSimpleStudentById(idStudent));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PutMapping("/removeAsignatura/{id}")
-    public ResponseEntity<StudentOutputSimpleDto> removeEstudiosToStudent(@PathVariable int id, @RequestBody List<Integer> IdList){
+    @PutMapping("/removeAsignatura/{idStudent}")
+    public ResponseEntity<StudentOutputSimpleDto> removeEstudiosToStudent(@PathVariable int idStudent, @RequestParam("IdList") List<Integer> IdList){
         try {
-            studentService.removeEstudiosToStudent(id, IdList);
-            return ResponseEntity.ok().body(studentService.getSimpleStudentById(id));
+            studentService.removeEstudiosToStudent(idStudent, IdList);
+            return ResponseEntity.ok().body(studentService.getSimpleStudentById(idStudent));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }

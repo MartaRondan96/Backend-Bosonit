@@ -106,6 +106,26 @@ public class StudentServiceImpl implements StudentService{
     }
     @Override
     public StudentOutputSimpleDto removeEstudiosToStudent(int id, List<Integer> idList) {
-       return null;
+        Alumnos_Estudios estudio;
+        Set<Alumnos_Estudios> estudiosList = new HashSet<>();
+        for (Integer i : idList) {
+            estudio = estudiosRepository.findById(i).orElseThrow();
+            estudiosList.add(estudio);
+        }
+        Student st = studentRepository.findById(id).orElseThrow();
+        Set<Alumnos_Estudios> asignaturasStudent = st.getEstudios();
+        Set<Alumnos_Estudios> asignaturasCoincidentes = new HashSet<>();
+        for (Alumnos_Estudios asig : estudiosList) {
+            for (Alumnos_Estudios aSt : asignaturasStudent) {
+               if(asig.getId() == aSt.getId())
+                   asignaturasCoincidentes.add(asig);
+            }
+        }
+
+        asignaturasStudent.removeAll(asignaturasCoincidentes);
+        st.setEstudios(asignaturasStudent);
+
+       return studentRepository.save(st)
+               .studentToStudentOutputSimpleDto();
     }
 }

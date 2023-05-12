@@ -277,6 +277,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "removeEstudiosToStudent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student/removeAsignatura/1?IdList=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"removeAsignatura",
+								"1"
+							],
+							"query": [
+								{
+									"key": "IdList",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -522,6 +557,26 @@
 							"port": "8080",
 							"path": [
 								"estudios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAsignaturasStudent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/estudios/asignaturas/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudios",
+								"asignaturas",
+								"1"
 							]
 						}
 					},
