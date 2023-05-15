@@ -4,9 +4,11 @@ import com.example.block7crudvalidation.application.PersonaService;
 import com.example.block7crudvalidation.application.PersonaServiceImpl;
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
+import com.example.block7crudvalidation.controller.dto.ProfesorSimpleOutputDto;
 import com.example.block7crudvalidation.domain.CustomError;
 import com.example.block7crudvalidation.exception.EntityNotFoundException;
 import com.example.block7crudvalidation.exception.UnprocessableEntityException;
+import com.example.block7crudvalidation.feign.ProfesorClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ import java.net.URI;
 public class PersonaController {
     @Autowired
     private PersonaService personaService;
+    @Autowired
+    ProfesorClient profesorClient;
 
     @PostMapping
     public ResponseEntity<PersonaOutputDto> addPersona(@RequestBody PersonaInputDto persona) throws Exception {
@@ -79,4 +83,11 @@ public class PersonaController {
         CustomError error = ex.getError();
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(error);
     }
+
+    @GetMapping("/profesor/{id}")
+    public ProfesorSimpleOutputDto getProfesor(@PathVariable int id) {
+        ProfesorSimpleOutputDto profesorDto = profesorClient.getProfesor(id);
+        return profesorDto;
+    }
+
 }

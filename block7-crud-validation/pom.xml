@@ -14,6 +14,7 @@
 	<name>block7-crud-validation</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
+		<spring-cloud.version>2021.0.0</spring-cloud.version>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
@@ -45,7 +46,24 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		</dependencies>
+		<dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-dependencies</artifactId>
+					<version>${spring-cloud.version}</version>
+					<type>pom</type>
+					<scope>import</scope>
+				</dependency>
+			</dependencies>
+		</dependencyManagement>
+
+
 
 	<build>
 		<plugins>
