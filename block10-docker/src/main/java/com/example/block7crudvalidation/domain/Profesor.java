@@ -8,6 +8,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
+@Table(name = "Profesores")
 @Getter
 @Setter
 @NoArgsConstructor

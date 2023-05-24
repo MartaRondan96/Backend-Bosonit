@@ -10,6 +10,7 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "Personas")
 @Getter
 @Setter
 @NoArgsConstructor
