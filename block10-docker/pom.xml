@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>block7-crud-validation</artifactId>
+	<artifactId>block10docker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>block7-crud-validation</name>
 	<description>Demo project for Spring Boot</description>
