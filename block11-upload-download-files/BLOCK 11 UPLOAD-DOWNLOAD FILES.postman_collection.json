@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "e17a85d7-7750-40ef-9798-7d0d4645f1c3",
+		"name": "BLOCK 11 UPLOAD-DOWNLOAD FILES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26988328"
+	},
+	"item": [
+		{
+			"name": "getFicherosByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/name/GIT BASH.txt",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"name",
+						"GIT BASH.txt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DescargarFichero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/descargar/GIT BASH.txt",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"descargar",
+						"GIT BASH.txt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFicheroById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/id/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubirFichero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/marta.rondan/Desktop/GIT BASH.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/?ruta&file=GIT BASH.txt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "ruta",
+							"value": null
+						},
+						{
+							"key": "file",
+							"value": "GIT BASH.txt"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

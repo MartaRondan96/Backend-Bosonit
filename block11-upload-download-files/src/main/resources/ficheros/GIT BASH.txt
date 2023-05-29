@@ -1,0 +1,55 @@
+CURSO DE GIT 
+--Primeros comandos
+git -version -> muestra la version de GIT
+git config --list -> muestra una lista con la configuracion de GIT
+git config user.name "Nombre" -> establece el nombre del usuario 
+git config user.email "email" -> establece el email del usuario 
+git init -> crea un repositorio manejado por GIT en el directorio en el que estamos
+ls -alh -> lista los directorios
+touch 'nombre_archivo'-> crear un archivo
+vim gitignore -> fichero donde defines que archivos tienen que ser ignorados por git
+git status -> estado de los archivos del repositorio
+git add -A -> añade al repositorio todos los archivos de este
+git rm --cached 'nombre_archivo' -> retira el archivo del seguimiento de git (tracked files)
+git commit -m "mensaje" -> hace commit de los archivos que tiene editados y no estan definidos en el .gitignore 
+						con un mensaje y nuestros datos de usuario
+git log -> muestra el historial de commits en el repositorio
+git clone enlace_github_https -> clona un repositorio en nuestro directorio
+git diff -> muestra las diferencias entre el repositorio y tu maquina
+git push origin master/nombre_rama -> sube al repositorio los cambios añadidos en el commit
+git pull origin master/nombre_rama -> descarga la ultima version del repositorio
+git branch nombre_rama -> crea nueva rama en el repositorio
+git checkout nombre_rama -> cambia de rama
+git branch -> muestra todas las ramas que tiene el repositorio
+git push origin --delete nombre_rama -> borra la rama del repositorio (se mantiene en local)
+
+--PASOS DE TRABAJO CON GIT
+1. Clonar repositorio
+git clone 'enlace a repositorio HTTPS'
+2. Descargar ultima version
+git pull origin 'nombre_rama'
+OPCIONAL Crear una rama y cambiar a ella 
+git branch nombre_rama
+git checkout nombre_rama
+3. Hacer los cambios en los archivos o añadir nuevos
+git add 'nombre_archivo'
+git add -A (todos los archivos de la carpeta)
+4. Commit con mensaje
+git commit -m "mensaje"
+5. Enviar el commit 
+git push origin master/nombre_rama
+OPCIONAL si esta en otra rama
+Volver a la rama master y hacer merge
+git checkout master
+git branch --merged
+git push origin master
+
+
+
+
+
+
+
+
+
+
