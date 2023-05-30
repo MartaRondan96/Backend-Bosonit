@@ -18,5 +18,5 @@ import java.util.Optional;
 public interface PersonaRepository extends JpaRepository<Persona,Integer> {
     Optional<Persona> findByUsuario(String usuario);
 
-    Iterable<PersonaOutputDto> getCustomQuery(HashMap<String, Object> data, String order);
+    Iterable<PersonaOutputDto> getCustomQuery(HashMap<String, Object> data, String order, int pageNumber, int pageSize);
 }

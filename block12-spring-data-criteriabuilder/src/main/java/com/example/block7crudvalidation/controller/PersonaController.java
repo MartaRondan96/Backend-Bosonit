@@ -104,7 +104,9 @@ public class PersonaController {
             @RequestParam(required = false) String surname,
             @RequestParam(required = false) LocalDate date_max,
             @RequestParam(required = false) LocalDate date_min,
-            @RequestParam(required = false, defaultValue = "u") String order) {
+            @RequestParam(required = false, defaultValue = "u") String order,
+            @RequestParam(defaultValue = "1", required = false) int pageNumber,
+            @RequestParam(defaultValue = "10", required = false) int pageSize) {
 
         HashMap<String, Object> data = new HashMap<>();
 
@@ -117,7 +119,7 @@ public class PersonaController {
             order = "u";
         }
 
-        return personaRepository.getCustomQuery(data, order);
+        return personaRepository.getCustomQuery(data, order, pageNumber, pageSize);
     }
 
 
