@@ -58,7 +58,7 @@ public class PersonaController {
     @PutMapping("/{id}")
     public ResponseEntity<PersonaOutputDto> updatePersona(@RequestBody PersonaInputDto Persona, @PathVariable int id) throws EntityNotFoundException, UnprocessableEntityException {
         personaService.updatePersona(Persona,id);
-        return ResponseEntity.ok().body(personaService.getPersonaById(id));
+        return ResponseEntity.ok().body(personaService.updatePersona(Persona,id));
     }
     //Al borrar una persona que tiene profesion asignada borra en cascada el profesor o estudiante que tenga asignado
     //el idPersona que se va a borrar
