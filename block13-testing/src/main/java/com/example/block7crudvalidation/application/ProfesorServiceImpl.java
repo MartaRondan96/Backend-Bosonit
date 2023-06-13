@@ -37,7 +37,8 @@ public class ProfesorServiceImpl implements ProfesorService{
         persona.setProfesion("Profesor");
         Profesor profesor = new Profesor(profesorDto);
         profesor.setPersona(persona);
-        return profesorRepository.save(profesor).profesorToProfesorFullOutputDto();
+        profesorRepository.save(profesor);
+        return profesor.profesorToProfesorFullOutputDto();
     }
 
     @Override
