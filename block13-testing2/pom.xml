@@ -15,6 +15,13 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<spring-cloud.version>2022.0.2</spring-cloud.version>
+		<sonar.login>admin</sonar.login>
+		<sonar.password>passSonar</sonar.password>
+		<sonar.projectKey>block13-testing2</sonar.projectKey>
+		<sonar.projectName>block13-testing2</sonar.projectName>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<sonar.token>sqp_04c2c361d3c7a21967be98adce6fccf883b16f6e</sonar.token>
 	</properties>
 	<dependencies>
 		<dependency>

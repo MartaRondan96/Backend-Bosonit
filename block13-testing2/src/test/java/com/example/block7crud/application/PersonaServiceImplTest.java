@@ -1,19 +1,18 @@
-package com.example.block7crud;
-
-import com.example.block7crud.application.PersonaServiceImpl;
+package com.example.block7crud.application;
 import com.example.block7crud.controller.dto.PersonaInputDTO;
 import com.example.block7crud.controller.dto.PersonaOutputDTO;
 import com.example.block7crud.domain.Persona;
 import com.example.block7crud.repository.PersonaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -26,7 +25,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-
+@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PersonaServiceImplTest {
     @Mock
     private PersonaRepository personaRepository;
