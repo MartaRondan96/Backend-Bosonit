@@ -1,0 +1,5 @@
+mvn clean verify sonar:sonar -Dsonar.projectKey=block13-testing3 -Dsonar.projectName='block13-testing3' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_eb547ae4058eca0b122dbc4fb71a0953e3a4878d
+mvn clean verify sonar:sonar -Dsonar.projectKey=block13-testing3 -Dsonar.projectName='block13-testing3' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_eb547ae4058eca0b122dbc4fb71a0953e3a4878d
+ç
+
+mvn clean verify sonar:sonar -Dsonar.projectKey=block13-testing3 -Dsonar.projectName='block13-testing3' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_eb547ae4058eca0b122dbc4fb71a0953e3a4878d
